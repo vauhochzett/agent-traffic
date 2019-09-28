@@ -2,7 +2,8 @@
 
 #include "Config.hpp"
 
-#include <at_msgs/NextMoveSrv.h>
+#include <at_msgs/UniquePositionMsg.h>
+#include <at_msgs/NextPositionsSrv.h>
 
 #include <boost/filesystem.hpp>
 #include <boost/tokenizer.hpp>
@@ -152,24 +153,26 @@ bool Application::run() {
   // https://answers.ros.org/question/11887/significance-of-rosspinonce/
   ros::spinOnce();
 
-  std::map<Actor *, at_msgs::NextMoveSrv> NextMoves;
-  for (const auto &Elem : Elements) {
-    if (auto *Act = dynamic_cast<Actor *>(Elem.get())) {
-      at_msgs::NextMoveSrv Move;
-      if (Act->getNextMove(Handle, Move)) {
-        NextMoves.emplace(Act, Move);
-      } else {
-        ROS_WARN("%s did not respond to next_move request!", Act->getName().c_str());	      
-      }
+  // std::map<Actor *, at_msgs::NextMoveSrv> NextMoves;
+  std::vector<at_msgs::UniquePositionMsg> uniquePositions;
+  at_msgs::NextPositionsSrv &NextPositions;
+  auto PosSrv = Handle.serviceClient<at_msgs::NextPositionsSrv>("/world/next_positions");
+  if (! PosSrv.call(NextPositions)) {
+    ROS_WARN("Error in /world/next_positions", Name.c_str());
+  } else {
+    uniquePositions = NextPositions.response.next_positions;
+  }
+
+
+  for (const auto &Elem : uniquePositions) {
+    if (auto *Act = dynamic_cast<UniquePositionMsg *>(Elem.get())) {
+      // TODO
+      ROS_WARN("TODO: NO MOVE DONE");
     }
   }
 
-  if (NextMoves.empty()) {
-    ROS_WARN("No unit responded to next_move request!");
-  }    
-
-  for (const auto &Pair : NextMoves) {
-    Pair.first->move(Pair.second);
+  if (uniquePositions.empty()) {
+    ROS_WARN("No next moves!");
   }
 
   auto *Rend = Renderer.get();
