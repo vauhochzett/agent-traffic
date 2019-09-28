@@ -24,7 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
 	geometry_msgs
 	roscpp
 	roslib
-	turtle_msg
+	at_msgs
 )
 
 catkin_package(CATKIN_DEPENDS geometry_msgs message_runtime std_msgs std_srvs)

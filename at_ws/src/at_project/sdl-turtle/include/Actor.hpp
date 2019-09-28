@@ -7,8 +7,8 @@
 #include "Orientation.hpp"
 #include "SDLDeleter.hpp"
 
-#include <turtle_msg/NextMoveSrv.h>
-#include <turtle_msg/TurtlePosition.h>
+#include <at_msgs/NextMoveSrv.h>
+#include <at_msgs/TurtlePosition.h>
 
 #include <ros/ros.h>
 
@@ -43,8 +43,8 @@ protected:
    * ROS-endpoint for service /turtleX/getPosition.
    * Fills `res` with the current position and orientation.
    */
-  bool getPosition(turtle_msg::TurtlePosition::Request &req,
-                   turtle_msg::TurtlePosition::Response &res);
+  bool getPosition(at_msgs::TurtlePosition::Request &req,
+                   at_msgs::TurtlePosition::Response &res);
 
   /**
    * Moves one field up, if possible.
@@ -123,14 +123,14 @@ public:
   /**
    * Performs the move specified by the passed `NextMove`.
    */
-  void move(const turtle_msg::NextMoveSrv &NextMove);
+  void move(const at_msgs::NextMoveSrv &NextMove);
 
   /**
    * Queries the /turtleX/next_move service for the next move.
    * On success, returns true and fills the `Move` parameter.
    * On error, returns false and does not change the `Move` parameter.
    */
-  bool getNextMove(ros::NodeHandle &Handle, turtle_msg::NextMoveSrv &Move);
+  bool getNextMove(ros::NodeHandle &Handle, at_msgs::NextMoveSrv &Move);
 
   /**
    * Gets the `Name` of this actor.

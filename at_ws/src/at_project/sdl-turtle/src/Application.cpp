@@ -2,7 +2,7 @@
 
 #include "Config.hpp"
 
-#include <turtle_msg/NextMoveSrv.h>
+#include <at_msgs/NextMoveSrv.h>
 
 #include <boost/filesystem.hpp>
 #include <boost/tokenizer.hpp>
@@ -153,10 +153,10 @@ bool Application::run() {
   // https://answers.ros.org/question/11887/significance-of-rosspinonce/
   ros::spinOnce();
 
-  std::map<Actor *, turtle_msg::NextMoveSrv> NextMoves;
+  std::map<Actor *, at_msgs::NextMoveSrv> NextMoves;
   for (const auto &Elem : Elements) {
     if (auto *Act = dynamic_cast<Actor *>(Elem.get())) {
-      turtle_msg::NextMoveSrv Move;
+      at_msgs::NextMoveSrv Move;
       if (Act->getNextMove(Handle, Move)) {
         NextMoves.emplace(Act, Move);
       } else {

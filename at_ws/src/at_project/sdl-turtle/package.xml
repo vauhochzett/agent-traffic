@@ -19,7 +19,7 @@
   <depend>std_srvs</depend>
   <depend>ca_msgs</depend>
   <depend>geometry_msgs</depend>
-  <depend>turtle_msg</depend>
+  <depend>at_msgs</depend>
 
   <depend>rosconsole</depend>
   <depend>roscpp</depend>

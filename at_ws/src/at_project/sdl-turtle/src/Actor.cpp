@@ -8,7 +8,7 @@
 #include <ca_msgs/Bumper.h>
 #include <ros/package.h>
 #include <ros/console.h>
-#include <turtle_msg/TurtlePosition.h>
+#include <at_msgs/TurtlePosition.h>
 #include <turtlesim/Pose.h>
 
 Actor::Actor(Application *World, std::string Name, const uint32_t X,
@@ -20,8 +20,8 @@ Actor::Actor(Application *World, std::string Name, const uint32_t X,
   ROS_INFO("Spawn turtle %s at [%d, %d]", Name.c_str(), X, Y);
 }
 
-bool Actor::getPosition(turtle_msg::TurtlePosition::Request &Req,
-                        turtle_msg::TurtlePosition::Response &Res) {
+bool Actor::getPosition(at_msgs::TurtlePosition::Request &Req,
+                        at_msgs::TurtlePosition::Response &Res) {
   Res.x = X;
   Res.y = Y;
   Res.theta = static_cast<uint8_t>(Orient);
@@ -38,14 +38,14 @@ void Actor::initialize(ros::NodeHandle &Handle) {
 }
 
 bool Actor::getNextMove(ros::NodeHandle &Handle,
-                        turtle_msg::NextMoveSrv &Move) {
+                        at_msgs::NextMoveSrv &Move) {
   const std::string SrvName{ Name + "/next_move" };
 
   // ****
   // INFO: This still does not work correctly for a _persistent_ connection.
   // ****
   // Querying information about the /turtleX/next_move service on-demand
-  auto MoveSrv = Handle.serviceClient<turtle_msg::NextMoveSrv>(SrvName);
+  auto MoveSrv = Handle.serviceClient<at_msgs::NextMoveSrv>(SrvName);
   if (MoveSrv.call(Move)) {
     return true;
   }
@@ -54,7 +54,7 @@ bool Actor::getNextMove(ros::NodeHandle &Handle,
   return false;
 }
 
-void Actor::move(const turtle_msg::NextMoveSrv &NextMove) {
+void Actor::move(const at_msgs::NextMoveSrv &NextMove) {
   const auto Move = static_cast<Movement>(NextMove.response.move);
   switch (Move) {
   case Movement::FORWARD: {
