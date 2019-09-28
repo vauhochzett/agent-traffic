@@ -1,0 +1,2 @@
+string agent_id
+PositionMsg position_msg

@@ -1,4 +1,0 @@
----
-int8 msg_id
-# The move can be [0, 4]: noop (0), forwards (1), right turn (2), backwards (3), left turn (4)
-int8 move
