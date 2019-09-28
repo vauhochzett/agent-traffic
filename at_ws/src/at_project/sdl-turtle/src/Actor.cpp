@@ -17,7 +17,7 @@ Actor::Actor(Application *World, std::string Name, const uint32_t X,
   loadSprite(ros::package::getPath("sdl_turtle") + "/resources/turtle.png",
              World->getRenderer());
 
-  ROS_INFO("Spawn turtle %s at [%d, %d]", Name.c_str(), X, Y);
+  ROS_INFO("Spawn agent %s at [%d, %d]", Name.c_str(), X, Y);
 }
 
 bool Actor::getPosition(at_msgs::TurtlePosition::Request &Req,
