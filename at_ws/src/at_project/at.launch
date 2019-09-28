@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- Launch the simulator, consensus module and three turtle controllers. -->
+<launch>
+  <node name="sdl" type="sdl-turtle" pkg="sdl_turtle" output="screen" />
+
+  <node name="world" type="world.py" pkg="at_world" />
+
+  <!-- <node name="t1" type="sdl_roomba.py" pkg="turtle_ai" args="turtle1" />
+  <node name="t2" type="sdl_roomba.py" pkg="turtle_ai" args="turtle2" />
+  <node name="t3" type="sdl_roomba.py" pkg="turtle_ai" args="turtle3" /> -->
+</launch>

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.1)
-project(at_msgs)
+project(at_world)
 
 
 find_package(catkin REQUIRED COMPONENTS
@@ -12,22 +12,23 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 
-add_service_files(
-  FILES
-  TurtlePosition.srv
-	NextMoveSrv.srv
-)
+#add_service_files(
+#  FILES
+#  TurtlePosition.srv
+#	NextMoveSrv.srv
+#)
 
-add_message_files(
-  FILES
-  PositionMsg.msg
-)
+#add_message_files(
+#  FILES
+#  Target.msg
+#  RegisterTargetMsg.msg
+#)
 
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  std_srvs
-)
+#generate_messages(
+#  DEPENDENCIES
+#  std_msgs
+#  std_srvs
+#)
 
 catkin_package(
   CATKIN_DEPENDS message_runtime std_msgs std_srvs 
