@@ -101,9 +101,8 @@ void Application::parseFieldMap(const std::string &Path) {
         if (std::regex_match(token, groups, turtleRegex)) {
           const auto id = std::stoi(groups[1].str());
           const auto orient = std::stoi(groups[2].str());
-          const auto turtleName = "turtle" + std::to_string(id);
-          addElement<Actor>(this, turtleName, col, row,
-                            static_cast<Orientation>(orient));
+          const auto agentId = "agent" + std::to_string(id);
+          addElement<Actor>(this, agentId, col, row, static_cast<Orientation>(orient));
         } else {
           // error
 	        ROS_FATAL("Could not parse turtle from token: %s", token.c_str());

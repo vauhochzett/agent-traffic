@@ -14,10 +14,10 @@
 Actor::Actor(Application *World, std::string Name, const uint32_t X,
              const uint32_t Y, const Orientation orient)
     : BaseActor(World, X, Y), Name(std::move(Name)), Orient(orient) {
-  loadSprite(ros::package::getPath("sdl_turtle") + "/resources/turtle.png",
+  loadSprite(ros::package::getPath("sdl_turtle") + "/resources/robot.png",
              World->getRenderer());
 
-  ROS_INFO("Spawn turtle %s at [%d, %d]", Name.c_str(), X, Y);
+  ROS_INFO("Spawn agent %s at [%d, %d]", Name.c_str(), X, Y);
 }
 
 bool Actor::getPosition(at_msgs::TurtlePosition::Request &Req,
