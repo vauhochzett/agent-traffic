@@ -34,9 +34,6 @@ cd "$ws_dir"
 
 $build_command
 
-echo "WIP!"
-exit 0
-
 source devel/setup.bash
 
 cd "$from"
