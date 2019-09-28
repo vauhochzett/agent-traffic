@@ -19,7 +19,7 @@ namespace fs = boost::filesystem;
 namespace {
 const fs::path userFolder =
     fs::path("/home") / fs::path(std::getenv("USER")) /
-    fs::path("pire_ws/src/pire-robosim/config/sdl_field.map");
+    fs::path("sdl_maps/sdl_field.map");
 const fs::path globalFolder = fs::path("/pire/config/sdl_field.map");
 }
 
