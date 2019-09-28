@@ -19,10 +19,9 @@ add_service_files(
 )
 
 add_message_files(
-#  FILES
-#  Target.msg
-#  RegisterTargetMsg.msg
-  )
+  FILES
+  PositionMsg.msg
+)
 
 generate_messages(
   DEPENDENCIES
