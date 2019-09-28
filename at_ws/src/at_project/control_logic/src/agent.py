@@ -1,12 +1,11 @@
 #!/usr/bin/env python3.6
 
 import rospy
-from at_msgs.msg import PositionMsg
+from at_msgs.msg import PositionMsg, ActionMsg
 import argparse 
 from types import SimpleNamespace
-from enum import Enum
 
-class ActionType(Enum):
+class ActionType:
     ACCELERATION       = 1
     THETA_ACCELERATION = 2
 
@@ -33,12 +32,11 @@ class Agent( object ):
             acceleration = max(-self.max_acceleration, self.speed_limit - msg.velocity)
         theta_acceleration = 0
         
-        rospy.loginfo(f"acc{acceleration}")
+        msg = ActionMsg()
+        msg.acceleration = acceleration
+        msg.theta_acceleration = theta_acceleration
 
-        return {
-                ActionType.ACCELERATION.value: acceleration, 
-                ActionType.THETA_ACCELERATION.value:         theta_acceleration
-                }
+        return msg
 
     def set_speed_limit(self, limit):
         self.speed_limit = limit
@@ -50,19 +48,24 @@ def callback(data, agent):
     action = agent.get_action( data )
 
     rospy.loginfo(data)
-    rospy.loginfo(f"Agent: acc {action[ActionType.ACCELERATION.value]}")
-    rospy.loginfo(f"Agent: theta_acc {action[ActionType.THETA_ACCELERATION.value]}")
+    rospy.loginfo(f"Agent: acc {action.acceleration}")
+    rospy.loginfo(f"Agent: theta_acc {action.theta_acceleration}")
+    
+    agent.pub.publish(action)
 
 
 
-def listener(agent):
+def start(agent):
     rospy.init_node('agent1', anonymous=True)
+
     rate = rospy.Rate(1) # 10hz
 
-    rospy.Subscriber(
+    agent.pub = rospy.Publisher('action', ActionMsg, queue_size=10)
+    agent.sub = rospy.Subscriber(
             "/agent1/position", 
             PositionMsg, 
             lambda data: callback(data, agent))
+
     rospy.spin()
 
 
@@ -80,6 +83,6 @@ if __name__ == '__main__':
     agent = Agent(**kargs)
 
     try:
-        listener(agent)
+        start(agent)
     except rospy.ROSInterruptException:
         pass

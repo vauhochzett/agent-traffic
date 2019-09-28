@@ -21,6 +21,7 @@ add_service_files(
 add_message_files(
   FILES
   PositionMsg.msg
+  ActionMsg.msg
 )
 
 generate_messages(
