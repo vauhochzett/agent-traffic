@@ -3,9 +3,10 @@
 from="$(pwd)"
 launch_file="at.launch"
 build_command="catkin build"
+ws_dir="../../../at_ws"
 
-if [[ ! -d ../../../at_ws ]]; then
-    echo "Expecting directory ../../../at_ws"
+if [[ ! -d "$ws_dir" ]]; then
+    echo "Expecting directory $ws_dir"
     exit 1
 fi
 
@@ -29,7 +30,7 @@ else
     exit 1
 fi
 
-cd ~/pire_ws
+cd "$ws_dir"
 
 $build_command
 
