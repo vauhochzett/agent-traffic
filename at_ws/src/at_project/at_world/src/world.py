@@ -25,8 +25,10 @@ class World(object):
             rospy.loginfo("Published")
             rate.sleep()
 
-    def next_move(self):
+    def next_move(self, _):
         # 0 Noop, 1 Forwards, 2 Right, 3 Backwards, 4 Left
+        # TODO: Get for each currently active agent the next move and return it
+        # TODO: Convert next_move to next_positions
         return { "msg_id": 0, "move": 1 }
 
 
