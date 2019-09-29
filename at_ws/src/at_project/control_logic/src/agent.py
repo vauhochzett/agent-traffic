@@ -82,10 +82,10 @@ if __name__ == '__main__':
     parser.add_argument("--max-theta-acceleration", default=Agent.MAX_THETA_DEFAULT)
 
     parser.parse_args(rospy.myargv(sys.argv)[1:])
-    kargs = vars(parser.parse_args())
-    print(kargs)
+    kwargs = vars(parser.parse_args())
+    print(kwargs)
 
-    agent = Agent(**kargs)
+    agent = Agent(**kwargs)
 
     try:
         agent.spin()
