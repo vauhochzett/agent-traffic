@@ -8,6 +8,7 @@ import rospy
 
 # pylint: disable-msg=no-name-in-module
 from at_msgs.msg import PositionMsg, ActionMsg
+from at_msgs.srv import NewAgentSrv
 
 
 class ActionType:
@@ -24,8 +25,9 @@ class Agent( object ):
 
 
     def __init__(self, agent_type, max_velocity, max_acceleration, max_theta_acceleration):
-        # TODO Retreive on registration from at_world
-        self.name = "agent1"
+        """ Ctor """
+        received_name = self.register_with_world()
+        self.name = received_name
 
         self.type = agent_type
         self.max_velocity = max_velocity
@@ -40,6 +42,13 @@ class Agent( object ):
         self.speed_limit = 1000
 
         rospy.loginfo(f"New agent created: {self.__dict__}")
+
+
+    def register_with_world(self):
+        """ Ensure the world knows about us... """
+        new_agent_srv_prx = rospy.ServiceProxy("/world/new_agent", NewAgentSrv)
+        received_name = new_agent_srv_prx()
+        return received_name
 
 
     def on_position(self, data):
