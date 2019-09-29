@@ -9,6 +9,8 @@ The complexity of the project can slowly be increased. The different agents in o
 - [ ] Setup environment
   - [ ] Setup ROS Nodes for agents (architecture)
   - [ ] Sprites for agents (cars / streets)
+
+- [ ] Change graphical representation logic of SDL to render based on info from at_world
   
 - [ ] Implement functions for agents
 - [ ] Implement logic they follow
