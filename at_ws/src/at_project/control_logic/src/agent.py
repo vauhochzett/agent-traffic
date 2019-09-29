@@ -23,10 +23,15 @@ class Agent( object ):
             max_acceleration = 5,
             max_theta_acceleration = 10
             ):
+        self.name = "agent1"
+
         self.type = atype
         self.max_velocity = max_velocity
         self.max_acceleration = max_acceleration
         self.max_theta_acceleration = max_theta_acceleration
+
+        self.action_pub = rospy.Publisher(f"/{self.name}/action", ActionMsg, queue_size=10)
+        self.position_sub = rospy.Subscriber(f"/{self.name}/position", PositionMsg, self.callback)
 
         self.speed_limit = 1000
 
