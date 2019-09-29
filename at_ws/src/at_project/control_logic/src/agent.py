@@ -31,7 +31,7 @@ class Agent( object ):
         self.max_theta_acceleration = max_theta_acceleration
 
         self.action_pub = rospy.Publisher(f"/{self.name}/action", ActionMsg, queue_size=10)
-        self.position_sub = rospy.Subscriber(f"/{self.name}/position", PositionMsg, self.callback)
+        self.position_sub = rospy.Subscriber(f"/{self.name}/position", PositionMsg, self.on_position)
 
         self.speed_limit = 1000
 
@@ -52,7 +52,7 @@ class Agent( object ):
     def set_speed_limit(self, limit):
         self.speed_limit = limit
 
-    def callback(self, data):
+    def on_position(self, data):
         action = self.get_action( data )
 
         rospy.loginfo(data)
@@ -61,9 +61,7 @@ class Agent( object ):
         self.action_pub.publish(action)
 
 
-    ################################
     ####### ROS routine ############
-
 
     def spin(self):
         rospy.init_node('agent1', anonymous=True)
