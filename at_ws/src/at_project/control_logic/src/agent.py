@@ -84,8 +84,9 @@ if __name__ == '__main__':
     parser.add_argument("--max-acceleration", default=Agent.MAX_ACC_DEFAULT)
     parser.add_argument("--max-theta-acceleration", default=Agent.MAX_THETA_DEFAULT)
 
-    parser.parse_args(rospy.myargv(sys.argv)[1:])
-    kwargs = vars(parser.parse_args())
+    filtered_argv = rospy.myargv()[1:]
+    args = parser.parse_args(filtered_argv)
+    kwargs = vars(args)
 
     agent = Agent(**kwargs)
 
