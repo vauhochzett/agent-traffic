@@ -72,15 +72,16 @@ class Agent( object ):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    # argparse stores --agent-type in field agent_type
     parser.add_argument(
-        "--agent_type",
+        "--agent-type",
         help=f"agent type (default: {Agent.TYPES[0]})",
         choices=Agent.TYPES,
         default=Agent.TYPES[0]
     )
-    parser.add_argument("--max_velocity", default=Agent.MAX_VEL_DEFAULT)
-    parser.add_argument("--max_acceleration", default=Agent.MAX_ACC_DEFAULT)
-    parser.add_argument("--max_theta_acceleration", default=Agent.MAX_THETA_DEFAULT)
+    parser.add_argument("--max-velocity", default=Agent.MAX_VEL_DEFAULT)
+    parser.add_argument("--max-acceleration", default=Agent.MAX_ACC_DEFAULT)
+    parser.add_argument("--max-theta-acceleration", default=Agent.MAX_THETA_DEFAULT)
 
     parser.parse_args(rospy.myargv(sys.argv)[1:])
     kargs = vars(parser.parse_args())
