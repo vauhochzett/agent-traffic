@@ -18,12 +18,15 @@ class ActionType:
 class Agent( object ):
 
     TYPES = ["car"]
+    MAX_VEL_DEFAULT = 50
+    MAX_ACC_DEFAULT = 5
+    MAX_THETA_DEFAULT = 10
 
     def __init__(self, 
             atype="car",
-            max_velocity = 50,
-            max_acceleration = 5,
-            max_theta_acceleration = 10
+            max_velocity,
+            max_acceleration,
+            max_theta_acceleration
             ):
         self.name = "agent1"
 
