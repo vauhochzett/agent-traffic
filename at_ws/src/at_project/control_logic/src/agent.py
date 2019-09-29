@@ -52,32 +52,22 @@ class Agent( object ):
     def set_speed_limit(self, limit):
         self.speed_limit = limit
 
-################################
-####### ROS routine ############
+    def callback(self, data):
+        action = self.get_action( data )
 
-def callback(data, agent):
-    action = agent.get_action( data )
-
-    rospy.loginfo(data)
-    rospy.loginfo(f"Agent: acc {action.acceleration}")
-    rospy.loginfo(f"Agent: theta_acc {action.theta_acceleration}")
-    
-    agent.pub.publish(action)
+        rospy.loginfo(data)
+        rospy.loginfo(f"Agent: acc {action.acceleration} | Agent: theta_acc {action.theta_acceleration}")
+        
+        self.action_pub.publish(action)
 
 
+    ################################
+    ####### ROS routine ############
 
-def start(agent):
-    rospy.init_node('agent1', anonymous=True)
 
-    rate = rospy.Rate(1) # 10hz
-
-    agent.pub = rospy.Publisher('action', ActionMsg, queue_size=10)
-    agent.sub = rospy.Subscriber(
-            "/agent1/position", 
-            PositionMsg, 
-            lambda data: callback(data, agent))
-
-    rospy.spin()
+    def spin(self):
+        rospy.init_node('agent1', anonymous=True)
+        rospy.spin()
 
 
 if __name__ == '__main__':
@@ -94,6 +84,6 @@ if __name__ == '__main__':
     agent = Agent(**kargs)
 
     try:
-        start(agent)
+        agent.spin()
     except rospy.ROSInterruptException:
         pass
