@@ -76,7 +76,7 @@ def start(agent):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--atype", help="agent type (default: car)", default="car")
+    parser.add_argument("--atype", help="agent type (default: car)", choices=["car"], default="car")
     parser.add_argument("--max_velocity", default=50)
     parser.add_argument("--max_acceleration", default=5)
     parser.add_argument("--max_theta_acceleration", default=10)
