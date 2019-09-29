@@ -5,7 +5,7 @@
 
   <node name="world" type="world.py" pkg="at_world" />
 
-  <!-- <node name="t1" type="sdl_roomba.py" pkg="turtle_ai" args="turtle1" />
-  <node name="t2" type="sdl_roomba.py" pkg="turtle_ai" args="turtle2" />
+  <node name="agent1" type="agent.py" pkg="control_logic" args="--agent-type car" />
+  <!-- <node name="t2" type="sdl_roomba.py" pkg="turtle_ai" args="turtle2" />
   <node name="t3" type="sdl_roomba.py" pkg="turtle_ai" args="turtle3" /> -->
 </launch>
