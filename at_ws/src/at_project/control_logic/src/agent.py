@@ -97,9 +97,9 @@ if __name__ == '__main__':
         choices=Agent.TYPES,
         default=Agent.TYPES[0]
     )
-    parser.add_argument("--max-velocity", default=Agent.MAX_VEL_DEFAULT)
-    parser.add_argument("--max-acceleration", default=Agent.MAX_ACC_DEFAULT)
-    parser.add_argument("--max-theta-acceleration", default=Agent.MAX_THETA_DEFAULT)
+    parser.add_argument("--max-velocity", type=int, default=Agent.MAX_VEL_DEFAULT)
+    parser.add_argument("--max-acceleration", type=int, default=Agent.MAX_ACC_DEFAULT)
+    parser.add_argument("--max-theta-acceleration", type=int, default=Agent.MAX_THETA_DEFAULT)
 
     filtered_argv = rospy.myargv()[1:]
     args = parser.parse_args(filtered_argv)
