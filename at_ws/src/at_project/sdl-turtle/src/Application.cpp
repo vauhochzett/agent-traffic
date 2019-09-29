@@ -153,27 +153,26 @@ bool Application::run() {
   // https://answers.ros.org/question/11887/significance-of-rosspinonce/
   ros::spinOnce();
 
-  // std::map<Actor *, at_msgs::NextMoveSrv> NextMoves;
-  std::vector<at_msgs::UniquePositionMsg> uniquePositions;
-  at_msgs::NextPositionsSrv &NextPositions;
-  auto PosSrv = Handle.serviceClient<at_msgs::NextPositionsSrv>("/world/next_positions");
-  if (! PosSrv.call(NextPositions)) {
+  at_msgs::NextPositionsSrv nextPositions;
+  if (ros::service::call("/world/next_positions", nextPositions))
+  {
+    ROS_INFO("SERVICE CALL OK");
+  }
+  else
+  {
     ROS_WARN("Error in /world/next_positions", Name.c_str());
-  } else {
-    uniquePositions = NextPositions.response.next_positions;
   }
 
+  // for (const auto &Elem : uniquePositions) {
+  //   if (auto *Act = dynamic_cast<UniquePositionMsg *>(Elem.get())) {
+  //     // TODO
+  //     ROS_WARN("TODO: NO MOVE DONE");
+  //   }
+  // }
 
-  for (const auto &Elem : uniquePositions) {
-    if (auto *Act = dynamic_cast<UniquePositionMsg *>(Elem.get())) {
-      // TODO
-      ROS_WARN("TODO: NO MOVE DONE");
-    }
-  }
-
-  if (uniquePositions.empty()) {
-    ROS_WARN("No next moves!");
-  }
+  // if (uniquePositions.empty()) {
+  //   ROS_WARN("No next moves!");
+  // }
 
   auto *Rend = Renderer.get();
 
