@@ -22,15 +22,10 @@ class Agent( object ):
     MAX_ACC_DEFAULT = 5
     MAX_THETA_DEFAULT = 10
 
-    def __init__(self, 
-            atype="car",
-            max_velocity,
-            max_acceleration,
-            max_theta_acceleration
-            ):
+    def __init__(self, agent_type, max_velocity, max_acceleration, max_theta_acceleration):
         self.name = "agent1"
 
-        self.type = atype
+        self.type = agent_type
         self.max_velocity = max_velocity
         self.max_acceleration = max_acceleration
         self.max_theta_acceleration = max_theta_acceleration
@@ -78,7 +73,7 @@ class Agent( object ):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--atype",
+        "--agent_type",
         help=f"agent type (default: {Agent.TYPES[0]})",
         choices=Agent.TYPES,
         default=Agent.TYPES[0]
