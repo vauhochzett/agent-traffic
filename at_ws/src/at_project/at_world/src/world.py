@@ -14,7 +14,7 @@ class World(object):
         self.nm_srv = rospy.Service("/agent1/next_move", NextMoveSrv, self.next_move)
 
     def simulate(self):
-        rate = rospy.Rate(30)
+        rate = rospy.Rate(3)
         while not rospy.is_shutdown():
             pos = PositionMsg()
             pos.pos_x = 0
