@@ -1,13 +1,18 @@
 #!/usr/bin/env python3.6
 
-import rospy
-from at_msgs.msg import PositionMsg, ActionMsg
-import argparse 
+import argparse
+import sys
 from types import SimpleNamespace
+
+import rospy
+
+from at_msgs.msg import PositionMsg, ActionMsg
+
 
 class ActionType:
     ACCELERATION       = 1
     THETA_ACCELERATION = 2
+
 
 class Agent( object ):
 
