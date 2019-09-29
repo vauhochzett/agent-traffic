@@ -81,7 +81,7 @@ if __name__ == '__main__':
     parser.add_argument("--max_acceleration", default=5)
     parser.add_argument("--max_theta_acceleration", default=10)
 
-    parser.parse_args()
+    parser.parse_args(rospy.myargv(sys.argv)[1:])
     kargs = vars(parser.parse_args())
     print(kargs)
 
