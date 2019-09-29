@@ -1,5 +1,0 @@
-at_project/control_logic
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/control_logic/cmake.lock /home/valentin/traffic-agent-simulation/at_ws/devel/./cmake.lock
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/control_logic/share/control_logic/cmake/control_logicConfig-version.cmake /home/valentin/traffic-agent-simulation/at_ws/devel/share/control_logic/cmake/control_logicConfig-version.cmake
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/control_logic/share/control_logic/cmake/control_logicConfig.cmake /home/valentin/traffic-agent-simulation/at_ws/devel/share/control_logic/cmake/control_logicConfig.cmake
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/control_logic/lib/pkgconfig/control_logic.pc /home/valentin/traffic-agent-simulation/at_ws/devel/lib/pkgconfig/control_logic.pc

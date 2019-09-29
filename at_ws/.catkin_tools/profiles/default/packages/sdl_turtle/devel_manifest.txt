@@ -1,6 +1,0 @@
-at_project/sdl-turtle
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/sdl_turtle/cmake.lock /home/valentin/traffic-agent-simulation/at_ws/devel/./cmake.lock
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/sdl_turtle/share/sdl_turtle/cmake/sdl_turtleConfig.cmake /home/valentin/traffic-agent-simulation/at_ws/devel/share/sdl_turtle/cmake/sdl_turtleConfig.cmake
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/sdl_turtle/share/sdl_turtle/cmake/sdl_turtleConfig-version.cmake /home/valentin/traffic-agent-simulation/at_ws/devel/share/sdl_turtle/cmake/sdl_turtleConfig-version.cmake
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/sdl_turtle/lib/pkgconfig/sdl_turtle.pc /home/valentin/traffic-agent-simulation/at_ws/devel/lib/pkgconfig/sdl_turtle.pc
-/home/valentin/traffic-agent-simulation/at_ws/devel/.private/sdl_turtle/lib/sdl_turtle/sdl-turtle /home/valentin/traffic-agent-simulation/at_ws/devel/lib/sdl_turtle/sdl-turtle
