@@ -9,6 +9,9 @@ from at_msgs.srv import NextMoveSrv, NewAgentSrv
 
 class World(object):
     def __init__(self):
+        self.members = set()
+        self.next_id = 1
+
         rospy.init_node("world")
         self.test_pos_pub = rospy.Publisher("/agent1/position", PositionMsg, queue_size=1)
         self.nm_srv = rospy.Service("/agent1/next_move", NextMoveSrv, self.next_move)
@@ -35,9 +38,16 @@ class World(object):
     def new_agent(self, _):
         """ Register a new agent. (Receives empty message.) """
         # TODO Create unique ID
-        # TODO Add to internal list a new agent
-        # TODO Return its new name
-        return "agent1"
+        new_agent_name = f"agent{self.next_id}"
+        self.next_id += 1
+
+        if new_agent_name in self.members:
+            raise RuntimeError(f"For some reason, new agent {new_agent_name} exists already...")
+
+        self.members.add(new_agent_name)
+        rospy.loginfo(f"Registered {new_agent_name}")
+
+        return new_agent_name
 
 
 if __name__ == "__main__":
