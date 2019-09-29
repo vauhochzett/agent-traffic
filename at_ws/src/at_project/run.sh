@@ -34,6 +34,16 @@ cd "$ws_dir"
 
 $build_command
 
+if [[ $? -ne 0 ]]; then
+    echo -e "\n! Build failed !"
+    exit 1
+fi
+
+if [[ ! -f devel/setup.bash ]]; then
+    echo -e "\n! Could not find devel/setup.bash to source !"
+    exit 1
+fi
+
 source devel/setup.bash
 
 cd "$from"

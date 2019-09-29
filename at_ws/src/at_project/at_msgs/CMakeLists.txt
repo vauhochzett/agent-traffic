@@ -14,12 +14,14 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
   FILES
-	NextPositionsSrv.srv
+  NewAgentSrv.srv
+  NextMoveSrv.srv
   TurtlePosition.srv
 )
 
 add_message_files(
   FILES
+  ActionMsg.msg
   PositionMsg.msg
   UniquePositionMsg.msg
 )

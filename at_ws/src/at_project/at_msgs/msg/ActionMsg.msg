@@ -1,0 +1,2 @@
+int8 acceleration
+uint16 theta_acceleration
