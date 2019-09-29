@@ -37,6 +37,15 @@ class Agent( object ):
         self.speed_limit = 1000
 
 
+    def on_position(self, data):
+        action = self.get_action( data )
+
+        rospy.loginfo(data)
+        rospy.loginfo(f"Agent: acc {action.acceleration} | Agent: theta_acc {action.theta_acceleration}")
+
+        self.action_pub.publish(action)
+
+
     def get_action( self, msg ):
         acceleration = 0
         if self.speed_limit > msg.velocity:
@@ -50,15 +59,6 @@ class Agent( object ):
         msg.theta_acceleration = theta_acceleration
 
         return msg
-
-
-    def on_position(self, data):
-        action = self.get_action( data )
-
-        rospy.loginfo(data)
-        rospy.loginfo(f"Agent: acc {action.acceleration} | Agent: theta_acc {action.theta_acceleration}")
-        
-        self.action_pub.publish(action)
 
 
     ####### ROS routine ############
