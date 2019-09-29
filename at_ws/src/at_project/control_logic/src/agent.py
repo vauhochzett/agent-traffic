@@ -22,6 +22,7 @@ class Agent( object ):
     MAX_ACC_DEFAULT = 5
     MAX_THETA_DEFAULT = 10
 
+
     def __init__(self, agent_type, max_velocity, max_acceleration, max_theta_acceleration):
         self.name = "agent1"
 
@@ -34,6 +35,7 @@ class Agent( object ):
         self.position_sub = rospy.Subscriber(f"/{self.name}/position", PositionMsg, self.on_position)
 
         self.speed_limit = 1000
+
 
     def get_action( self, msg ):
         acceleration = 0
@@ -49,8 +51,6 @@ class Agent( object ):
 
         return msg
 
-    def set_speed_limit(self, limit):
-        self.speed_limit = limit
 
     def on_position(self, data):
         action = self.get_action( data )
