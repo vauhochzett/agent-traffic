@@ -83,9 +83,9 @@ if __name__ == '__main__':
         choices=Agent.TYPES,
         default=Agent.TYPES[0]
     )
-    parser.add_argument("--max_velocity", default=50)
-    parser.add_argument("--max_acceleration", default=5)
-    parser.add_argument("--max_theta_acceleration", default=10)
+    parser.add_argument("--max_velocity", default=Agent.MAX_VEL_DEFAULT)
+    parser.add_argument("--max_acceleration", default=Agent.MAX_ACC_DEFAULT)
+    parser.add_argument("--max_theta_acceleration", default=Agent.MAX_THETA_DEFAULT)
 
     parser.parse_args(rospy.myargv(sys.argv)[1:])
     kargs = vars(parser.parse_args())
