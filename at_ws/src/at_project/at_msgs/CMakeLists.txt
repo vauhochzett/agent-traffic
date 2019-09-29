@@ -14,8 +14,9 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_service_files(
   FILES
+  NewAgentSrv.srv
+  NextMoveSrv.srv
   TurtlePosition.srv
-	NextMoveSrv.srv
 )
 
 add_message_files(
