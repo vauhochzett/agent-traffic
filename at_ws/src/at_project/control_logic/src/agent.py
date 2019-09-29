@@ -24,12 +24,15 @@ class Agent( object ):
 
 
     def __init__(self, agent_type, max_velocity, max_acceleration, max_theta_acceleration):
+        # TODO Retreive on registration from at_world
         self.name = "agent1"
 
         self.type = agent_type
         self.max_velocity = max_velocity
         self.max_acceleration = max_acceleration
         self.max_theta_acceleration = max_theta_acceleration
+
+        rospy.init_node(self.name, anonymous=True)
 
         self.action_pub = rospy.Publisher(f"/{self.name}/action", ActionMsg, queue_size=10)
         self.position_sub = rospy.Subscriber(f"/{self.name}/position", PositionMsg, self.on_position)
@@ -61,10 +64,8 @@ class Agent( object ):
         return msg
 
 
-    ####### ROS routine ############
-
     def spin(self):
-        rospy.init_node('agent1', anonymous=True)
+        # Separation of concerns
         rospy.spin()
 
 
