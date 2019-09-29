@@ -6,6 +6,7 @@ from types import SimpleNamespace
 
 import rospy
 
+# pylint: disable-msg=no-name-in-module
 from at_msgs.msg import PositionMsg, ActionMsg
 
 
