@@ -17,6 +17,8 @@ class ActionType:
 
 class Agent( object ):
 
+    TYPES = ["car"]
+
     def __init__(self, 
             atype="car",
             max_velocity = 50,
@@ -72,7 +74,12 @@ class Agent( object ):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--atype", help="agent type (default: car)", choices=["car"], default="car")
+    parser.add_argument(
+        "--atype",
+        help=f"agent type (default: {Agent.TYPES[0]})",
+        choices=Agent.TYPES,
+        default=Agent.TYPES[0]
+    )
     parser.add_argument("--max_velocity", default=50)
     parser.add_argument("--max_acceleration", default=5)
     parser.add_argument("--max_theta_acceleration", default=10)
