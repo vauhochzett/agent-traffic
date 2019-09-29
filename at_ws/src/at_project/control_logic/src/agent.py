@@ -39,6 +39,8 @@ class Agent( object ):
 
         self.speed_limit = 1000
 
+        rospy.loginfo(f"New agent created: {self.__dict__}")
+
 
     def on_position(self, data):
         action = self.get_action( data )
@@ -84,7 +86,6 @@ if __name__ == '__main__':
 
     parser.parse_args(rospy.myargv(sys.argv)[1:])
     kwargs = vars(parser.parse_args())
-    print(kwargs)
 
     agent = Agent(**kwargs)
 
