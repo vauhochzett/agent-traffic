@@ -11,6 +11,9 @@ from at_msgs.msg import PositionMsg, ActionMsg
 from at_msgs.srv import NewAgentSrv
 
 
+NEW_AGENT_SRV_PATH = "/world/new_agent"
+
+
 class ActionType:
     ACCELERATION       = 1
     THETA_ACCELERATION = 2
@@ -46,9 +49,14 @@ class Agent( object ):
 
     def register_with_world(self):
         """ Ensure the world knows about us... """
-        new_agent_srv_prx = rospy.ServiceProxy("/world/new_agent", NewAgentSrv)
-        received_name = new_agent_srv_prx()
-        return received_name
+        new_agent_srv_prx = rospy.ServiceProxy(NEW_AGENT_SRV_PATH, NewAgentSrv)
+
+        rospy.loginfo(f"Waiting for service {NEW_AGENT_SRV_PATH}...")
+        new_agent_srv_prx.wait_for_service(timeout=5)
+
+        rospy.loginfo("Registering...")
+        new_agent_srv_response = new_agent_srv_prx()
+        return new_agent_srv_response.agent_name
 
 
     def on_position(self, data):
