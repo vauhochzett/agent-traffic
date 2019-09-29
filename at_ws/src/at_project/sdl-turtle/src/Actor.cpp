@@ -14,7 +14,7 @@
 Actor::Actor(Application *World, std::string Name, const uint32_t X,
              const uint32_t Y, const Orientation orient)
     : BaseActor(World, X, Y), Name(std::move(Name)), Orient(orient) {
-  loadSprite(ros::package::getPath("sdl_turtle") + "/resources/robot.png",
+  loadSprite(ros::package::getPath("sdl_turtle") + "/resources/car1.png",
              World->getRenderer());
 
   ROS_INFO("Spawn agent %s at [%d, %d]", Name.c_str(), X, Y);

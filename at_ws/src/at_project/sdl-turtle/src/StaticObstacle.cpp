@@ -18,6 +18,6 @@ void StaticObstacle::render(SDL_Renderer *Renderer) const {
                                  /*w=*/static_cast<int32_t>(HGap),
                                  /*h=*/static_cast<int32_t>(VGap) };
 
-  SDL_SetRenderDrawColor(Renderer, 68, 68, 68, SDL_ALPHA_OPAQUE);
+  SDL_SetRenderDrawColor(Renderer, 0, 135, 15, SDL_ALPHA_OPAQUE);
   SDL_RenderFillRect(Renderer, &DstRect);
 }

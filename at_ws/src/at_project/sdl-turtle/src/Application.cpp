@@ -174,8 +174,8 @@ bool Application::run() {
 
   auto *Rend = Renderer.get();
 
-  // clear with white
-  SDL_SetRenderDrawColor(Rend, 255, 255, 255, SDL_ALPHA_OPAQUE);
+  // clear with green
+  SDL_SetRenderDrawColor(Rend, 90, 90, 90, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(Rend);
 
   // rendering
